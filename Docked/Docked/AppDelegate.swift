@@ -99,7 +99,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    // Turn dark mode on/off when user clicks on app icon
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
         if NSApp.currentEvent!.type == NSEvent.EventType.rightMouseUp {
             displayMenu()
