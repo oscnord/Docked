@@ -61,8 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(NSScreen.screens.count > 1) {
             showHideDock(mode: showDock)
             statusItem?.button?.image = NSImage(named: "docked-connected")
-        }
-        else {
+        } else {
             showHideDock(mode: hideDock)
             statusItem?.button?.image = NSImage(named: "docked-disconnected")
         }
@@ -70,7 +69,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
-        
         // Check if statusbar is full
         guard let button = statusItem?.button else {
             print("Status Bar is full.")
@@ -84,13 +82,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // check if first launch and if external screen is connected
         if(firstLaunch == true) {
             firstLaunch = false
+         
             if(NSScreen.screens.count > 1) {
                 let showDock = #"tell app "System Events" to tell dock preferences to set autohide to false"#
                 showHideDock(mode: showDock)
                 statusItem?.button?.image = NSImage(named: "docked-connected")
             }
         }
-        
         if let button = statusItem?.button {
             button.action = #selector(self.statusBarButtonClicked(sender:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
